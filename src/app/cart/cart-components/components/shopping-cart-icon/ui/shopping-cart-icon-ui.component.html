@@ -1,0 +1,14 @@
+<div class="shopping-cart-icon-ui">
+  <mat-icon 
+    [matBadge]="cartItemsCount" 
+    [matBadgeHidden]="cartItemsCount === 0" 
+    matBadgeColor="accent"
+    [class.animating]="animating"
+    aria-hidden="false" aria-label="Shopping Basket"
+    (click)="onIconClick.emit()">shopping_basket</mat-icon>
+  <drop-down 
+    [attachToElement]="shoppingCartIcon"
+    [isOpen$]="openDropDown$">
+    <shopping-cart ui="dropdown"></shopping-cart>
+  </drop-down>
+</div>

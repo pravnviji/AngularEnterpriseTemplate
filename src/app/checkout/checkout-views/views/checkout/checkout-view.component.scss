@@ -1,0 +1,29 @@
+@import '../../../../../styles/colors';
+
+.checkout-view {
+  padding: 2rem;
+}
+
+shopping-cart {
+  article {
+    margin-bottom: 1rem;
+  }
+}
+
+checkout-user-form {
+  .mat-form-field-infix {
+    width: 15rem;
+  }
+}
+
+checkout-submit-button {
+  button[color="primary"] {
+    margin-top: 4rem;
+    width: 16rem;
+    height: 4rem;
+    font-size: 1.5rem;
+    span {
+      color: $white;
+    }
+  }
+}

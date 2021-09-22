@@ -1,0 +1,20 @@
+language: node_js
+node_js:
+  - 12
+addons:
+  apt:
+    packages:
+      # Ubuntu 16+ does not install this dependency by default, so we need to install it ourselves
+      - libgconf-2-4
+cache: npm
+install:
+  - export NG_CLI_ANALYTICS=ci
+  - npm ci
+jobs:
+  include:
+   - name: 'Chromatic Deployment'
+     script: chromatic --project-token ${CHROMATIC_PROJECT_TOKEN} --exit-zero-on-changes
+   - name: 'Jest & Cypress Testing'
+     script:
+       - ng build --prod
+       - jest --config ./jest/app.config.js --runInBand && concurrently -k -s first "./node_modules/spa-http-server/bin/http-server ./dist/ngLibrary -a localhost -p 4200 --push-state" "./node_modules/cypress/bin/cypress run --record"

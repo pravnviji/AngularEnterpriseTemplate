@@ -1,0 +1,20 @@
+@import '../../../../../../styles/layout';
+
+article {
+  height: calc(100vh - #{$header-height});
+  
+  // @todo move the padding into the parent component (let the view dress that up)
+  padding: 1rem;
+  padding-bottom: 0;
+}
+
+.inventory {
+  overflow-y: auto;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+Book {
+  min-height: 1px;
+  min-width: 1px;
+}
